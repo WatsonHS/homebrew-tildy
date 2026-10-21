@@ -4,6 +4,7 @@ Homebrew tap and binary releases for [tildy](https://github.com/WatsonHS/homebre
 
 ```sh
 brew tap WatsonHS/tildy
+brew trust WatsonHS/tildy   # Homebrew requires trusting a third-party tap first
 brew install tildy
 ```
 
