@@ -2,6 +2,8 @@
 
 Homebrew tap and binary releases for [tildy](https://github.com/WatsonHS/homebrew-tildy), an async, agent-friendly Zsh prompt. The source repository is private for now; this repository holds the formula and the release tarballs.
 
+Supported packages: macOS ARM64/x86_64 and Linux ARM64/x86_64. Linux binaries require **system glibc 2.39 or newer** (for example, Ubuntu 24.04); the formula rejects older systems. Zsh is required to enable the prompt. Linux ARM64 has full Rust/Zsh/PTY validation; x86_64 has package and Homebrew validation under emulation.
+
 ```sh
 brew tap WatsonHS/tildy
 brew trust WatsonHS/tildy   # Homebrew requires trusting a third-party tap first
@@ -29,6 +31,6 @@ brew upgrade tildy
 exec zsh
 ```
 
-Use a new terminal or `exec zsh` after upgrading to load the new shell adapter. Running `source ~/.zshrc` keeps an adapter that is already loaded. Version 0.3.4 fixes the extra Enter previously needed when an empty prompt changed height, including after enabling blank lines.
+Use a new terminal or `exec zsh` after upgrading to load the new shell adapter. Running `source ~/.zshrc` keeps an adapter that is already loaded. Version 0.3.6 adds Linux packages, completes asynchronous prompt redraw before acknowledging a frame, and protects config writes across state directories with a two-second lock wait limit. Existing themes and shell setup are preserved.
 
 For manual setup, `tildy init zsh` and `tildy init zsh --instant` continue to print scripts for `eval` without modifying `.zshrc`.
