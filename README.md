@@ -13,9 +13,9 @@ Open a new terminal after running `tildy init`. It sets up the instant prompt an
 
 A Nerd Font is needed for the `pastel-powerline` preset. If you already use another prompt, disable its initialization before enabling Tildy.
 
-To choose a theme, colors and layout with live preview, run `tildy configure`. This step is optional; Tildy works with its built-in defaults.
+To choose a theme, colors and layout with live preview, run `tildy theme`. This step is optional; Tildy works with its built-in defaults. The old `tildy configure` command remains available as a compatibility alias with the same arguments.
 
-`tildy config` provides `get`, `validate`, `apply`, `history` and `rollback` commands for managing the same configuration, with JSON output for scripts and agents. Both entry points share configuration writes, revision checks and history. These are subcommands without a leading dash: `tildy configure` and `tildy config get`. See `tildy config --help` for details.
+`tildy config` provides `get`, `validate`, `apply`, `history` and `rollback` commands for managing the same configuration, with JSON output for scripts and agents. Both entry points share configuration writes, revision checks and history. These are subcommands without a leading dash: `tildy theme` and `tildy config get`. See `tildy config --help` for details.
 
 Upgrade with:
 
