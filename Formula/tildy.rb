@@ -1,17 +1,17 @@
 class Tildy < Formula
   desc "Async, agent-friendly Zsh prompt"
   homepage "https://github.com/WatsonHS/homebrew-tildy"
-  version "0.3.0-m3"
+  version "0.3.1"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.0-m3/tildy-0.3.0-m3-aarch64-apple-darwin.tar.gz"
-      sha256 "d4f5b2dace13f3d978a94504e856ae3c45469efa6f0a437eef6864f8cf01c2a4"
+      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.1/tildy-0.3.1-aarch64-apple-darwin.tar.gz"
+      sha256 "71bc7590939fea750b534f3332c1b0f2c9281cfa5a6a8b9896fd92a23f0a9127"
     end
     on_intel do
-      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.0-m3/tildy-0.3.0-m3-x86_64-apple-darwin.tar.gz"
-      sha256 "0aefc10cd8c712c94fd0f44d6c821de3191c472a750fe5f48d55085863d217ab"
+      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.1/tildy-0.3.1-x86_64-apple-darwin.tar.gz"
+      sha256 "c87a4fe35a5c24ea5c9e4560f857d052497e24b5445618a23c209bc40ab4db67"
     end
   end
 
@@ -21,14 +21,21 @@ class Tildy < Formula
 
   def caveats
     <<~EOS
-      Add to ~/.zshrc:
-        first line:  eval "$(tildy init zsh --instant)"
-        last line:   eval "$(tildy init zsh)"
+      Set up ~/.zshrc, then open a new terminal:
+        tildy init
+      Preview without writing: tildy init --dry-run
       A Nerd Font is needed for the pastel-powerline preset.
     EOS
   end
 
   test do
-    assert_match "tildy", shell_output("#{bin}/tildy --version")
+    assert_match version.to_s, shell_output("#{bin}/tildy --version")
+    ENV["ZDOTDIR"] = testpath.to_s
+    system bin/"tildy", "init"
+    initial = (testpath/".zshrc").read
+    assert_match "# >>> tildy instant >>>", initial
+    assert_match "# >>> tildy prompt >>>", initial
+    system bin/"tildy", "init"
+    assert_equal initial, (testpath/".zshrc").read
   end
 end
