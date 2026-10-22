@@ -21,9 +21,17 @@ class Tildy < Formula
 
   def caveats
     <<~EOS
-      Set up ~/.zshrc, then open a new terminal:
+      Enable Tildy in Zsh (backs up .zshrc; respects ZDOTDIR):
         tildy init
-      Preview without writing: tildy init --dry-run
+      Then open a new terminal.
+
+      Choose a theme, colors and layout (optional):
+        tildy configure
+
+      Inspect or manage the same config (advanced use and scripts):
+        tildy config --help
+
+      Preview shell setup without writing: tildy init --dry-run
       A Nerd Font is needed for the pastel-powerline preset.
     EOS
   end
