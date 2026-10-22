@@ -1,28 +1,28 @@
 class Tildy < Formula
   desc "Async, agent-friendly Zsh prompt"
   homepage "https://github.com/WatsonHS/homebrew-tildy"
-  version "0.3.6"
+  version "0.4.0"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.6/tildy-0.3.6-aarch64-apple-darwin.tar.gz"
-      sha256 "ff134a8f8c5d388f7686f90b46419f48a65091eaa37233ec04657a22d3c9bc6e"
+      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.4.0/tildy-0.4.0-aarch64-apple-darwin.tar.gz"
+      sha256 "de58dac5da2b7fa7883390146d24252753abc0b3a251a25406e1364692071088"
     end
     on_intel do
-      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.6/tildy-0.3.6-x86_64-apple-darwin.tar.gz"
-      sha256 "cd98b52aeb9cc02771d3fba48489e62a920ceb5c31e46dd647a7bfec3973730b"
+      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.4.0/tildy-0.4.0-x86_64-apple-darwin.tar.gz"
+      sha256 "978ceeecd05b63f113d0356a06f81e65239d16b05936e9d58e05f8fbed620b85"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.6/tildy-0.3.6-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "fa822550fd1fa2abdd639328ac530b0e7696142a1eb864a27a915d7fa9fb95d1"
+      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.4.0/tildy-0.4.0-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "3dbfe3febd2e264275b09fd3e0740b211a2fccbc5163e60762134972cf0b6ce7"
     end
     on_intel do
-      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.6/tildy-0.3.6-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "061920372e7599aee3c9c138b611050bc91d6465c86730260364480ee7bc6262"
+      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.4.0/tildy-0.4.0-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "7e14c441aba5823b3de03ad70ea6625ec245b973b17272d1df6616b1e9064f8d"
     end
   end
 

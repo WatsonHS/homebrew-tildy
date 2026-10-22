@@ -31,6 +31,37 @@ brew upgrade tildy
 exec zsh
 ```
 
-Use a new terminal or `exec zsh` after upgrading to load the new shell adapter. Running `source ~/.zshrc` keeps an adapter that is already loaded. Version 0.3.6 adds Linux packages, completes asynchronous prompt redraw before acknowledging a frame, and protects config writes across state directories with a two-second lock wait limit. Existing themes and shell setup are preserved.
+Use a new terminal or `exec zsh` after upgrading to load the new shell adapter. Running `source ~/.zshrc` keeps an adapter that is already loaded. Version 0.4.0 completes M4 with Starship migration reports, repository display overrides, and terminal compatibility fixes. Existing themes and shell setup are preserved. Ghostty, cmux, and iTerm2 retain compact history and command navigation; Terminal.app keeps the full accepted prompt to preserve its native command marks.
 
 For manual setup, `tildy init zsh` and `tildy init zsh --instant` continue to print scripts for `eval` without modifying `.zshrc`.
+
+## M4 configuration and migration
+
+Preview a Starship migration before applying it:
+
+```sh
+tildy import starship --file ~/.config/starship.toml --json
+```
+
+The report separates ignored options, Starship bridges, and items requiring manual changes. Bridged modules retain the absolute source TOML path and require both Starship and that file. `--write` only creates a missing Tildy user config, uses the same bounded transaction lock as other config writes, and refuses to overwrite an existing file.
+
+A `.tildy.json` in the nearest Git worktree root can override display settings for existing modules:
+
+```json
+{
+  "schema_version": 1,
+  "modules": {
+    "cwd": { "style": { "foreground": "cyan", "bold": true } }
+  }
+}
+```
+
+The repository layer cannot define commands, change executable paths, add modules, or activate modules absent from the lower layout. Invalid layers are ignored as a whole and reported by `tildy config get --effective --json`. Changes apply on the next prompt request. Set `TILDY_PROJECT_CONFIG=0` before initialization to disable this layer.
+
+```sh
+tildy config get --effective --cwd /path/to/repo --json
+tildy config validate --project --file .tildy.json --json
+tildy schema --project --json
+```
+
+M4 native GUI acceptance covered Ghostty 1.3.1, cmux 0.65.0, iTerm2 3.7.6, and Terminal.app 2.15: width calibration, window and font resizing, command navigation, instant cache display, and input typed during startup. Calibration measures cell widths; it does not supply missing font glyphs. Recalibrate after changing terminal or font settings.
