@@ -1,17 +1,17 @@
 class Tildy < Formula
   desc "Async, agent-friendly Zsh prompt"
   homepage "https://github.com/WatsonHS/homebrew-tildy"
-  version "0.3.1"
+  version "0.3.2"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.1/tildy-0.3.1-aarch64-apple-darwin.tar.gz"
-      sha256 "71bc7590939fea750b534f3332c1b0f2c9281cfa5a6a8b9896fd92a23f0a9127"
+      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.2/tildy-0.3.2-aarch64-apple-darwin.tar.gz"
+      sha256 "2240491b8743ada149f8116ea272654386c59727d322af547be36ab41089e3df"
     end
     on_intel do
-      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.1/tildy-0.3.1-x86_64-apple-darwin.tar.gz"
-      sha256 "c87a4fe35a5c24ea5c9e4560f857d052497e24b5445618a23c209bc40ab4db67"
+      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.2/tildy-0.3.2-x86_64-apple-darwin.tar.gz"
+      sha256 "08a5bc754f9f0eea9af1bd6a773ecb0df8802a9259d12fb3c6be583c4549ba90"
     end
   end
 
@@ -26,7 +26,7 @@ class Tildy < Formula
       Then open a new terminal.
 
       Choose a theme, colors and layout (optional):
-        tildy configure
+        tildy theme
 
       Inspect or manage the same config (advanced use and scripts):
         tildy config --help
@@ -38,6 +38,9 @@ class Tildy < Formula
 
   test do
     assert_match version.to_s, shell_output("#{bin}/tildy --version")
+    theme_help = shell_output("#{bin}/tildy theme --help")
+    assert_match "Usage: tildy theme", theme_help
+    assert_equal theme_help, shell_output("#{bin}/tildy configure --help")
     ENV["ZDOTDIR"] = testpath.to_s
     system bin/"tildy", "init"
     initial = (testpath/".zshrc").read
