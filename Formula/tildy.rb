@@ -1,17 +1,17 @@
 class Tildy < Formula
   desc "Async, agent-friendly Zsh prompt"
   homepage "https://github.com/WatsonHS/homebrew-tildy"
-  version "0.3.4"
+  version "0.3.5"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.4/tildy-0.3.4-aarch64-apple-darwin.tar.gz"
-      sha256 "175f21cad5d8ba8d5fdf2f383b8eb5d0dc72ab0f67a7f4ea550a6795507a5761"
+      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.5/tildy-0.3.5-aarch64-apple-darwin.tar.gz"
+      sha256 "0bc77a251e2fea32cd9ee48adffb92d6e4e1c114feb62c6dbdbb4ba8e361c020"
     end
     on_intel do
-      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.4/tildy-0.3.4-x86_64-apple-darwin.tar.gz"
-      sha256 "a017d66b9e12ca257cba79c4daff79bed2c5fa23bbac30be3e42ba0226717ffc"
+      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.5/tildy-0.3.5-x86_64-apple-darwin.tar.gz"
+      sha256 "e6937b370da658c46c90ea7dc9a8c7cbf6d44ecd37befbe350c4494491d5ffee"
     end
   end
 
@@ -32,7 +32,10 @@ class Tildy < Formula
         tildy config --help
 
       Preview shell setup without writing: tildy init --dry-run
-      A Nerd Font is needed for the pastel-powerline preset.
+      Default: pastel-powerline, two rows, with a blank line before the prompt.
+      A Nerd Font is needed for this preset. Use tildy theme to choose another.
+      UI language: English by default; export TILDY_LANG=zh for Chinese,
+      or TILDY_LANG=auto to follow the system locale.
     EOS
   end
 
@@ -43,6 +46,10 @@ class Tildy < Formula
     assert_equal theme_help, shell_output("#{bin}/tildy configure --help")
     ENV["TILDY_CONFIG"] = (testpath/"config.json").to_s
     ENV["XDG_STATE_HOME"] = (testpath/"state").to_s
+    effective = JSON.parse(shell_output("#{bin}/tildy config get --effective --json"))["data"]["config"]
+    assert_equal "pastel-powerline", effective["preset"]
+    assert_equal true, effective["add_newline"]
+    assert_equal 2, effective["layout"]["rows"].length
     system bin/"tildy", "theme", "--preset", "plain", "--add-newline"
     assert_equal true, JSON.parse((testpath/"config.json").read)["add_newline"]
     system bin/"tildy", "theme", "--preset", "plain", "--no-add-newline"
