@@ -1,17 +1,17 @@
 class Tildy < Formula
   desc "Async, agent-friendly Zsh prompt"
   homepage "https://github.com/WatsonHS/homebrew-tildy"
-  version "0.3.3"
+  version "0.3.4"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.3/tildy-0.3.3-aarch64-apple-darwin.tar.gz"
-      sha256 "514454bbcb9465e7c21752efc41260d28023e10332c7adcbb4943168c51ec8c4"
+      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.4/tildy-0.3.4-aarch64-apple-darwin.tar.gz"
+      sha256 "175f21cad5d8ba8d5fdf2f383b8eb5d0dc72ab0f67a7f4ea550a6795507a5761"
     end
     on_intel do
-      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.3/tildy-0.3.3-x86_64-apple-darwin.tar.gz"
-      sha256 "80721d36b1847ecb981286bf5367c75e2df8067190b2e7c1c25d7ed91f27b86e"
+      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.3.4/tildy-0.3.4-x86_64-apple-darwin.tar.gz"
+      sha256 "a017d66b9e12ca257cba79c4daff79bed2c5fa23bbac30be3e42ba0226717ffc"
     end
   end
 
