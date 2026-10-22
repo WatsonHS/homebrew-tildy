@@ -11,9 +11,11 @@ tildy init
 
 Open a new terminal after running `tildy init`. It sets up the instant prompt and normal prompt in `~/.zshrc` (or `$ZDOTDIR/.zshrc`), backs up existing files and preserves symlinks. Running it again does not add duplicate entries. Use `tildy init --dry-run` to preview the result without writing files.
 
-A Nerd Font is needed for the `pastel-powerline` preset. If you already use another prompt, disable its initialization before enabling Tildy.
+The default appearance is `pastel-powerline`: two rows with a blank line before each prompt. A Nerd Font is needed for this preset. Explicit preset, layout and blank-line settings take precedence. If you already use another prompt, disable its initialization before enabling Tildy.
 
-To choose a theme, colors, layout and blank lines with live preview, run `tildy theme`. Press Tab to focus the controls, use Left/Right to select 提示符前空行 (blank line before the prompt), Space to toggle, and Enter to save. The choice is restored when reopening the picker and preserved when switching presets. This step is optional; Tildy works with its built-in defaults. The old `tildy configure` command remains available as a compatibility alias with the same arguments.
+To choose a theme, colors, layout and blank lines with live preview, run `tildy theme`. Press Tab to focus the controls, use Left/Right to select Blank line, Space to toggle, and Enter to save. The choice is restored when reopening the picker and preserved when switching presets. This step is optional; Tildy works with its built-in defaults. The old `tildy configure` command remains available as a compatibility alias with the same arguments.
+
+Version notices, setup messages, theme controls and preview descriptions use English by default. Set `export TILDY_LANG=zh` before the initialization lines in `.zshrc` for Chinese, or `export TILDY_LANG=auto` to follow `LC_ALL`, `LC_MESSAGES`, then `LANG`. Use `en` to force English; unsupported languages fall back to English. CLI help and low-level validation errors remain English. Commands, configuration keys and JSON metadata stay in English.
 
 For scripts, use `tildy theme --preset pastel-powerline --add-newline` to enable blank lines, or `--no-add-newline` to disable them.
 
