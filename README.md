@@ -24,6 +24,9 @@ Upgrade with:
 ```sh
 brew update
 brew upgrade tildy
+exec zsh
 ```
+
+Use a new terminal or `exec zsh` after upgrading to load the new shell adapter. Running `source ~/.zshrc` keeps an adapter that is already loaded. Version 0.3.4 fixes the extra Enter previously needed when an empty prompt changed height, including after enabling blank lines.
 
 For manual setup, `tildy init zsh` and `tildy init zsh --instant` continue to print scripts for `eval` without modifying `.zshrc`.
