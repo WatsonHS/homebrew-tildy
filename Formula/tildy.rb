@@ -1,28 +1,28 @@
 class Tildy < Formula
   desc "Async, agent-friendly Zsh prompt"
   homepage "https://github.com/WatsonHS/homebrew-tildy"
-  version "0.4.0"
+  version "0.4.1"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.4.0/tildy-0.4.0-aarch64-apple-darwin.tar.gz"
-      sha256 "de58dac5da2b7fa7883390146d24252753abc0b3a251a25406e1364692071088"
+      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.4.1/tildy-0.4.1-aarch64-apple-darwin.tar.gz"
+      sha256 "68bcfe13fc2e19ae430fcb5b7076f6898df0cef17c6a60a759399d7a4c1e03c5"
     end
     on_intel do
-      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.4.0/tildy-0.4.0-x86_64-apple-darwin.tar.gz"
-      sha256 "978ceeecd05b63f113d0356a06f81e65239d16b05936e9d58e05f8fbed620b85"
+      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.4.1/tildy-0.4.1-x86_64-apple-darwin.tar.gz"
+      sha256 "3f89511f51a6a061dbde7cfac8ef4e94142f15a9f534836fe41ba1bc5d81ae6b"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.4.0/tildy-0.4.0-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "3dbfe3febd2e264275b09fd3e0740b211a2fccbc5163e60762134972cf0b6ce7"
+      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.4.1/tildy-0.4.1-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "70152c1d1f27007e7fa7508cd3d1bd4e164e9e1320690059b9514e3f886e9309"
     end
     on_intel do
-      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.4.0/tildy-0.4.0-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "7e14c441aba5823b3de03ad70ea6625ec245b973b17272d1df6616b1e9064f8d"
+      url "https://github.com/WatsonHS/homebrew-tildy/releases/download/v0.4.1/tildy-0.4.1-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "c54dc1193e70999f1f744948dfd101699cb82a60c6c5b8686fca01b5edac63b3"
     end
   end
 
@@ -31,6 +31,7 @@ class Tildy < Formula
       odie "Tildy requires system glibc 2.39 or newer (for example, Ubuntu 24.04)."
     end
     bin.install "tildy"
+    doc.install "LICENSE", "NOTICE", "licenses"
   end
 
   def caveats
