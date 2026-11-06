@@ -1,6 +1,6 @@
 # homebrew-tildy
 
-Homebrew tap and binary releases for [tildy](https://github.com/WatsonHS/homebrew-tildy), an async, agent-friendly Zsh prompt. The source repository is private for now; this repository holds the formula and the release tarballs.
+Homebrew tap and binary releases for [Tildy](https://github.com/WatsonHS/tildy), an async, agent-friendly Zsh prompt. The source is open under the MIT license; this repository holds the formula and the release tarballs.
 
 Supported packages: macOS ARM64/x86_64 and Linux ARM64/x86_64. Linux binaries require **system glibc 2.39 or newer** (for example, Ubuntu 24.04); the formula rejects older systems. Zsh is required to enable the prompt. Linux ARM64 has full Rust/Zsh/PTY validation; x86_64 has package and Homebrew validation under emulation.
 
